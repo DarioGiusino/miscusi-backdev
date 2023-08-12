@@ -1,19 +1,25 @@
 package org.miscusi.backdev.pojo;
 
+import java.util.Arrays;
+import java.util.List;
+
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToMany;
 import jakarta.persistence.ManyToOne;
 
 @Entity
 public class Product {
-    
+
     @Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Integer id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer id;
 
     private String label;
 
@@ -24,7 +30,11 @@ public class Product {
 
     @ManyToOne
     @JoinColumn(name = "menu_id")
+    @JsonBackReference
     private Menu menu;
+
+    @ManyToMany
+    private List<Ingredient> ingredients;
 
     public Product() {
     }
@@ -34,6 +44,11 @@ public class Product {
         setDescription(description);
         setPrice(price);
         setMenu(menu);
+    }
+
+    public Product(String label, String description, Float price, Menu menu, Ingredient... ingredients) {
+        this(label, description, price, menu);
+        setIngredients(ingredients);
     }
 
     public Integer getId() {
@@ -74,5 +89,17 @@ public class Product {
 
     public void setMenu(Menu menu) {
         this.menu = menu;
+    }
+
+    public List<Ingredient> getIngredients() {
+        return ingredients;
+    }
+
+    public void setIngredients(List<Ingredient> ingredients) {
+        this.ingredients = ingredients;
+    }
+
+    public void setIngredients(Ingredient[] ingredients) {
+        setIngredients(Arrays.asList(ingredients));
     }
 }

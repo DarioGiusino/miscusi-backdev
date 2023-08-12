@@ -2,36 +2,36 @@ package org.miscusi.backdev.pojo;
 
 import java.util.List;
 
-import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.JsonBackReference;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.OneToMany;
+import jakarta.persistence.ManyToMany;
 
 @Entity
-public class Menu {
+public class Ingredient {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    private String name;
+    private String label;
 
     @Column(columnDefinition = "TEXT")
     private String description;
 
-    @OneToMany(mappedBy = "menu")
-    @JsonManagedReference
+    @ManyToMany(mappedBy = "ingredients")
+    @JsonBackReference
     private List<Product> products;
 
-    public Menu() {
+    public Ingredient() {
     }
 
-    public Menu(String name, String description) {
-        setName(name);
+    public Ingredient(String label, String description) {
+        setLabel(label);
         setDescription(description);
     }
 
@@ -43,12 +43,12 @@ public class Menu {
         this.id = id;
     }
 
-    public String getName() {
-        return name;
+    public String getLabel() {
+        return label;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setLabel(String label) {
+        this.label = label;
     }
 
     public String getDescription() {
@@ -58,4 +58,5 @@ public class Menu {
     public void setDescription(String description) {
         this.description = description;
     }
+
 }
