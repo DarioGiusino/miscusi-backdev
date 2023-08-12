@@ -21,7 +21,7 @@ public class Menu {
     @Column(columnDefinition = "TEXT")
     private String description;
 
-    @OneToMany
+    @OneToMany(mappedBy = "menu")
     private List<Product> products;
 
     public Menu() {

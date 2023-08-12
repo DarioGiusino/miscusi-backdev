@@ -1,7 +1,5 @@
 package org.miscusi.backdev.pojo;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
-
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -25,8 +23,7 @@ public class Product {
     private Float price;
 
     @ManyToOne
-    @JoinColumn(nullable = false)
-	@JsonBackReference
+    @JoinColumn(name = "menu_id")
     private Menu menu;
 
     public Product() {
