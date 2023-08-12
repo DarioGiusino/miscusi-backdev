@@ -15,22 +15,18 @@ public class MenuServ {
 	private MenuRepo menuRepo;
 	
 	public List<Menu> findAll() {
-		
 		return menuRepo.findAll();
 	}
 	
 	public Menu save(Menu menu) {
-		
 		return menuRepo.save(menu);
 	}
 	
 	public Optional<Menu> findById(int id) {
-		
 		return menuRepo.findById(id);
 	}
 	
 	public void delete(Menu menu) {
-		
 		menuRepo.delete(menu);
 	}
 }
