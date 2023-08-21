@@ -3,7 +3,6 @@ package org.miscusi.backdev.pojo;
 import java.util.Arrays;
 import java.util.List;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import jakarta.persistence.Column;
@@ -32,7 +31,6 @@ public class Product {
 
     @ManyToOne
     @JoinColumn(name = "menu_id")
-    @JsonBackReference
     private Menu menu;
 
     @ManyToMany
@@ -42,7 +40,7 @@ public class Product {
 
     @ManyToMany
     @JoinTable(name = "orders_products", joinColumns = @JoinColumn(name = "product_id"), inverseJoinColumns = @JoinColumn(name = "order_id"))
-    @JsonBackReference
+    @JsonManagedReference
     private List<OrderEntity> orders;
 
     public Product() {

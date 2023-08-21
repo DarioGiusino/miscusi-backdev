@@ -3,7 +3,7 @@ package org.miscusi.backdev.pojo;
 import java.util.Arrays;
 import java.util.List;
 
-import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.JsonBackReference;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -25,7 +25,7 @@ public class OrderEntity {
     private Boolean isPaid;
 
     @ManyToMany(mappedBy = "orders")
-    @JsonManagedReference
+    @JsonBackReference
     private List<Product> products;
 
     public OrderEntity() {
