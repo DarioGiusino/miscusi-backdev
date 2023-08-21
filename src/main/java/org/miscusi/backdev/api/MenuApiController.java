@@ -1,5 +1,7 @@
 package org.miscusi.backdev.api;
 
+import java.util.logging.Logger;
+
 import org.miscusi.backdev.pojo.Menu;
 import org.miscusi.backdev.serv.MenuServ;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,8 +22,16 @@ public class MenuApiController {
     @Autowired
     MenuServ menuServ;
 
+    private final Logger logger;
+
+    public MenuApiController(Logger globalLogger) {
+        this.logger = globalLogger;
+    }
+
     @PostMapping(path = "/create", consumes = "application/json")
     public ResponseEntity<Menu> apiCreate(@RequestBody Menu menu) {
+        logger.info("POST /api/menu/create called");
+
         Menu newMenu = menuServ.save(menu);
 
         return new ResponseEntity<>(newMenu, HttpStatus.OK);
@@ -29,6 +39,8 @@ public class MenuApiController {
 
     @PutMapping(path = "/update", consumes = "application/json")
     public ResponseEntity<Menu> apiUpdate(@RequestBody Menu menu) {
+        logger.info("POST /api/menu/update called");
+
         Menu updatedMenu = menuServ.save(menu);
 
         return new ResponseEntity<>(updatedMenu, HttpStatus.OK);
