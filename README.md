@@ -1,48 +1,49 @@
 # miscusi-backdev
-Questo repository contiene un sistema di gestione ristorante implementato in Java utilizzando il framework Spring Boot. Il sistema copre la creazione del menu, la gestione dei prodotti e l'elaborazione degli ordini.
 
-Classe Principale dell'Applicazione: BackDevApplication
-Punto di ingresso dell'applicazione Spring Boot.
-Inizializza dati di esempio all'avvio dell'applicazione utilizzando l'interfaccia CommandLineRunner.
-Dimostra l'utilizzo dei servizi MenuServ e ProductServ.
+This repository contains a restaurant management system implemented in Java using the Spring Boot framework. The system covers menu creation, product management, and order processing.
 
-Controller REST API: MenuApiController
-Gestisce i punti finali REST per le operazioni legate al menu.
-Fornisce punti finali per la creazione e l'aggiornamento degli elementi del menu.
-Utilizza MenuServ per la logica di business.
+Main Application Class: BackDevApplication
+Entry point of the Spring Boot application.
+Initializes sample data upon application startup using the CommandLineRunner interface.
+Demonstrates the usage of MenuServ and ProductServ services.
 
-Configurazione della Sicurezza: AuthConfiguration
-Configura la sicurezza di Spring per l'applicazione.
-Disabilita la protezione CSRF per semplicità.
-Permette tutte le richieste per scopi dimostrativi.
+REST API Controller: MenuApiController
+Handles REST endpoints for operations related to the menu.
+Provides endpoints for creating and updating menu items.
+Uses MenuServ for business logic.
 
-Configurazione del Logging: LoggerConfiguration
-Configura un logger globale per l'applicazione.
-Registra le informazioni su un file chiamato global-logs.log.
+Security Configuration: AuthConfiguration
+Configures Spring security for the application.
+Disables CSRF protection for simplicity.
+Allows all requests for demonstration purposes.
 
-Componente di Pulizia del Logger: LoggerCleanup
-Utilizzato per pulire le risorse associate al logger globale.
-Chiude tutti gli handler del logger globale allo spegnimento dell'applicazione.
+Logging Configuration: LoggerConfiguration
+Configures a global logger for the application.
+Logs information to a file named global-logs.log.
 
-Classi Entità: Ingredient, Menu, OrderEntity, Product
-Rappresentano le entità dati principali dell'applicazione.
-Stabiliscono relazioni tra entità utilizzando annotazioni JPA.
-Utilizzano relazioni bidirezionali per navigare tra entità correlate.
+Logger Cleanup Component: LoggerCleanup
+Used to clean up resources associated with the global logger.
+Closes all handlers of the global logger upon application shutdown.
 
-Interfacce Repository: IngredientRepo, MenuRepo, OrderRepo, ProductRepo
-Estendono JpaRepository per eseguire operazioni CRUD sulle entità.
-Forniscono funzionalità di accesso di base per le rispettive entità.
+Entity Classes: Ingredient, Menu, OrderEntity, Product
+Represent the main data entities of the application.
+Establish relationships between entities using JPA annotations.
+Use bidirectional relationships to navigate between related entities.
 
-Classi di Servizio: IngredientServ, MenuServ, OrderServ, ProductServ
-Implementano la logica di business per le rispettive entità.
-Utilizzano interfacce di repository per l'accesso ai dati.
-Espongono metodi per eseguire operazioni CRUD sulle entità.
+Repository Interfaces: IngredientRepo, MenuRepo, OrderRepo, ProductRepo
+Extend JpaRepository to perform CRUD operations on entities.
+Provide basic access functionality for their respective entities.
 
-Configurazione del Database: application.properties
-Configura i dettagli di connessione al database MySQL.
-Specifica ad Hibernate di generare tabelle all'avvio dell'applicazione per semplicità.
+Service Classes: IngredientServ, MenuServ, OrderServ, ProductServ
+Implement business logic for their respective entities.
+Use repository interfaces for data access.
+Expose methods to perform CRUD operations on entities.
 
-File SQL di Dati di Esempio: data.sql
-Contiene istruzioni SQL per inserire dati di esempio nel database.
+Database Configuration: application.properties
+Configures connection details to the MySQL database.
+Specifies to Hibernate to generate tables upon application startup for simplicity.
 
-Questo sistema di gestione ristorante funge da base per la creazione di applicazioni più sofisticate. Include funzionalità come la creazione del menu, la gestione dei prodotti e l'elaborazione degli ordini. Il sistema è integrato con Spring Security per l'autenticazione e l'autorizzazione di base.
+Sample Data SQL File: data.sql
+Contains SQL statements to insert sample data into the database.
+
+This restaurant management system serves as a foundation for creating more sophisticated applications. It includes features such as menu creation, product management, and order processing. The system is integrated with Spring Security for basic authentication and authorization.
